@@ -17,4 +17,9 @@ class Controller extends BaseController
     {
         return view('homepage', ['skills' => $skillRepo->get()]);
     }
+
+    public function sendEmail()
+    {
+        return view('email-sent');
+    }
 }
