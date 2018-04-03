@@ -8,6 +8,10 @@ use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use App\Repositories\SkillRepositoryInterface;
 use App\Repositories\SkillRepository;
+use App\Mail\Contact;
+
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class Controller extends BaseController
 {
@@ -15,11 +19,17 @@ class Controller extends BaseController
 
     public function homepage(SkillRepositoryInterface $skillRepo)
     {
-        return view('homepage', ['skills' => $skillRepo->get()]);
+        return view('homepage');
     }
 
-    public function sendEmail()
+    public function sendEmail(Request $request)
     {
+        try {
+          Mail::to('salvatore.seidita@yahoo.com')->send(new Contact($request));
+        } catch (\Exception $e) {
+          dd($e);
+        }
+
         return view('email-sent');
     }
 }

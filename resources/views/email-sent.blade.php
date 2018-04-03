@@ -2,7 +2,7 @@
 
 @section('content')
 <br><br><br><br><br>
-<div class="">
+<div>
 
   <h1>Email Sent view</h1>
 

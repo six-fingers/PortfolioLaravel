@@ -14,4 +14,3 @@
 Route::get('/', 'Controller@homepage');
 
 Route::post('/email', 'Controller@sendEmail');
-Route::get('/email', 'Controller@sendEmail');
